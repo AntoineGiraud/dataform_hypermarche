@@ -1,3 +1,11 @@
+config {
+  type: "table",
+  description: "Dimension des produits : ce qu'on vend",
+  columns: {
+    id_produit: "ID du produit",
+  }
+}
+
 with produit_brut as (
     select
         id_produit,

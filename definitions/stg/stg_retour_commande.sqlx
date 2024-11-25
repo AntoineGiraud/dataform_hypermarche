@@ -1,6 +1,6 @@
 config {
   type: "view",
-  description: "Historique des replanifications des chantier",
+  description: "Les commandes retournées",
   columns: {
     id_commande: "Order's ID",
     est_retourne: "Order returned by the customer"

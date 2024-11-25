@@ -1,3 +1,11 @@
+config {
+  type: "table",
+  description: "Fait: Les articles de nos commandes",
+  columns: {
+    id_commande: "ID de la commande",
+  }
+}
+
 select
     id_commande,
     dt_commande,

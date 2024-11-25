@@ -1,3 +1,12 @@
+config {
+  type: "table",
+  description: "Fait: Les commandes",
+  columns: {
+    id_commande: "ID de la commande",
+  }
+}
+
+
 with cmd as (
     select
         a.id_commande,

@@ -1,3 +1,11 @@
+config {
+  type: "table",
+  description: "Dimension des clients",
+  columns: {
+    id_client: "id du client",
+  }
+}
+
 select distinct
     id_client,
     client_nom as nom,

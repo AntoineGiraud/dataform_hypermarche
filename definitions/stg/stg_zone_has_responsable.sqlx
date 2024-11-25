@@ -1,14 +1,12 @@
 config {
   type: "view",
-  description: "Historique des replanifications des chantier",
+  description: "Les zones et leurs responsables",
   columns: {
-    order_id: "Order's ID",
-    is_returned: "Order returned by the customer"
   }
 }
 
 
 select
-    "Zone géographique" as "zone",
+    "Zone géographique" as zone,
     "Responsable régional" as responsable
 from ${ ref('personnes') }

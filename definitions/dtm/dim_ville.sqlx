@@ -1,3 +1,11 @@
+config {
+  type: "table",
+  description: "Dimension des villes : qq villes où nos clients sont localisés",
+  columns: {
+    id_ville: "ID recomposé des villes (clé de substitution)",
+  }
+}
+
 with villes as (
     select distinct
         ville_nom as nom,
