@@ -1,0 +1,13 @@
+config {
+  type: "view",
+  description: "Historique des replanifications des chantier",
+  columns: {
+    id_commande: "Order's ID",
+    est_retourne: "Order returned by the customer"
+  }
+}
+
+select
+    "ID commande" as id_commande,
+    replace("Retourné", 'Oui', '1')::int as est_retourne
+from ${ ref('retours') }

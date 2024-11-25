@@ -1,0 +1,31 @@
+config {
+  type: "view",
+  description: "Les achats de notre hypermarché - donnéees denormalisées",
+  columns: {
+    id_commande: "Order's ID",
+    id_ligne: "Détail/articles de la commande - appelé ligne"
+  }
+}
+
+select
+    "ID ligne" as id_ligne,
+    "ID commande" as id_commande,
+    strptime("Date de commande", '%m/%d/%Y')::date as dt_commande,
+    strptime("Date d'expédition", '%m/%d/%Y')::date as dt_expedition,
+    "Statut commande" as priorite,
+    "ID client" as id_client,
+    "Nom du client" as client_nom,
+    Segment as client_segment,
+    Ville as ville_nom,
+    Région as ville_region,
+    Pays as ville_pays,
+    "Zone géographique" as ville_zone,
+    "ID produit" as id_produit,
+    Catégorie as produit_categorie,
+    "Sous-catégorie" as produit_souscategorie,
+    "Nom du produit" as produit_nom,
+    replace("Montant des ventes", ',', '.')::numeric as montant_vente,
+    Quantité::int as quantite,
+    replace(Remise, ',', '.')::numeric as remise,
+    replace(Profit, ',', '.')::numeric as profit
+from ${ ref('achats') }

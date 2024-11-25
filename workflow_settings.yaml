@@ -1,0 +1,8 @@
+dataformCoreVersion: 3.0.8
+defaultProject: testdriveantoine-1589640785987
+defaultLocation: europe-west9
+defaultDataset: dataform
+defaultAssertionDataset: dataform_assertions
+vars:
+    env: "dev"
+    date_reference: "current_date('Europe/Paris') - 1"
