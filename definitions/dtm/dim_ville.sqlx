@@ -3,6 +3,10 @@ config {
   description: "Dimension des villes : qq villes où nos clients sont localisés",
   columns: {
     id_ville: "ID recomposé des villes (clé de substitution)",
+  },
+  assertions: {
+    uniqueKey: ["id_ville"],
+    nonNull:["id_ville"]
   }
 }
 

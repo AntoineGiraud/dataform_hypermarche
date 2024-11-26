@@ -1,7 +1,7 @@
 dataformCoreVersion: 3.0.8
 defaultProject: testdriveantoine-1589640785987
 defaultLocation: europe-west9
-defaultDataset: dataform
+defaultDataset: dataform_gold
 defaultAssertionDataset: dataform_assertions
 vars:
     env: "dev"

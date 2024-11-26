@@ -3,6 +3,10 @@ config {
   description: "Dimension des clients",
   columns: {
     id_client: "id du client",
+  },
+  assertions: {
+    uniqueKey: ["id_client"],
+    nonNull:["id_client"]
   }
 }
 

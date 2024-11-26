@@ -1,4 +1,5 @@
 config {
+  schema: "dataform_silver",
   type: "view",
   description: "Les zones et leurs responsables",
   columns: {

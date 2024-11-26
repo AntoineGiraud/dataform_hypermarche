@@ -3,6 +3,10 @@ config {
   description: "Fait: Les commandes",
   columns: {
     id_commande: "ID de la commande",
+  },
+  assertions: {
+    uniqueKey: ["id_commande"],
+    nonNull:["id_commande"]
   }
 }
 

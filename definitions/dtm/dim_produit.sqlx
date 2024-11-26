@@ -3,6 +3,10 @@ config {
   description: "Dimension des produits : ce qu'on vend",
   columns: {
     id_produit: "ID du produit",
+  },
+  assertions: {
+    uniqueKey: ["id_produit"],
+    nonNull:["id_produit"]
   }
 }
 

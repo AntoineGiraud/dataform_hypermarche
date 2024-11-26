@@ -3,6 +3,11 @@ config {
   description: "Fait: Les articles de nos commandes",
   columns: {
     id_commande: "ID de la commande",
+    id_ligne: "ID ligne: détail du pannier",
+  },
+  assertions: {
+    uniqueKey: ["id_ligne"],
+    nonNull:["id_ligne"]
   }
 }
 
