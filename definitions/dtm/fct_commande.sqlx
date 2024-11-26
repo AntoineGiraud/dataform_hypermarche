@@ -24,7 +24,7 @@ with cmd as (
         on v.nom = a.ville_nom
             and v.region = a.ville_region
             and v.pays = a.ville_pays
-            and v."zone" = a.ville_zone
+            and v.zone = a.ville_zone
     group by 1
 )
 
@@ -36,7 +36,7 @@ select
     coalesce(r.est_retourne, 0) as est_retourne,
     cmd.dt_commande,
     cmd.dt_expedition,
-    date_diff('day', cmd.dt_expedition, cmd.dt_commande) as delai_expedition,
+    date_diff(cmd.dt_expedition, cmd.dt_commande, DAY) as delai_expedition,
     cmd.nb_produits,
     cmd.nb_articles,
     cmd.montant_vente,

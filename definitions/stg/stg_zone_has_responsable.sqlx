@@ -7,6 +7,6 @@ config {
 
 
 select
-    "Zone géographique" as zone,
-    "Responsable régional" as responsable
+    `Zone géographique` as zone,
+    `Responsable régional` as responsable
 from ${ ref('personnes') }

@@ -14,12 +14,12 @@ with produit_brut as (
         max(produit_nom) as nom
         -- avg(montant_vente / quantite) as prix_unitaire,
         -- sum(montant_vente*(1+remise)) / sum(quantite) as prix_unitaire_v2
-    from ${ ref('stg_commande') }
+    from ${ref('stg_commande')}
     group by 1
 ),
 
 marque_double as (
-    select 'Office Star' as marque
+      select 'Office Star' as marque
     union all
     select 'Binney & Smith' as marque
     union all
@@ -27,18 +27,20 @@ marque_double as (
 ),
 
 produit as (
-    select
-        p.* exclude nom,
-        coalesce(md.marque, split_part(nom, ' ', 1)) as marque,
-        split_part(nom, ',', 2) as detail,
-        split_part(nom, ',', 1) as nom,
+      select
+        p.* except(nom),
+        coalesce(md.marque, split(nom, ' ')[0]) as marque,
+        if(array_length(split(nom, ','))=2, split(nom, ',')[1], null) as detail,
+        split(nom, ',')[0] as nom,
         nom as nom_raw
         -- position(',' in nom) as pos_virgule,
         -- len(nom) - len(replace(nom, ',', '')) as nb_virgule
     from produit_brut as p
-    left join marque_double as md on 1 = position(md.marque in p.nom)
+    left join marque_double as md on 1 = STRPOS(p.nom, md.marque)
 )
 
-select p.*
+select
+  p.* except(nom),
+  replace(nom, marque, '') nom,
 from produit as p
 order by 2, 3, 4, 5, 6

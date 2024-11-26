@@ -8,6 +8,6 @@ config {
 }
 
 select
-    "ID commande" as id_commande,
-    replace("Retourné", 'Oui', '1')::int as est_retourne
+    `ID commande` as id_commande,
+    cast(replace(`Retourné`, 'Oui', '1') as integer) as est_retourne
 from ${ ref('retours') }
