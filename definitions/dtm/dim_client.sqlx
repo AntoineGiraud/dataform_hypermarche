@@ -5,9 +5,13 @@ config {
     id_client: "id du client",
   },
   assertions: {
-    uniqueKey: ["id_client"],
-    nonNull:["id_client"]
-  }
+    uniqueKey: ['id_client'],
+    // uniqueKeys: [['user_id'], ['signup_date', 'customer_id']],
+    nonNull:['id_client'],
+    rowConditions: [
+      // 'email like "%@%.%"'
+    ]
+  }, schema: 'stg'
 }
 
 select distinct

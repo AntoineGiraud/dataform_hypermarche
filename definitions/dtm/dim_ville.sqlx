@@ -7,7 +7,16 @@ config {
   assertions: {
     uniqueKey: ["id_ville"],
     nonNull:["id_ville"]
-  }
+  },
+  dependOnDependencyAssertions: true,
+  dependencies: [
+    "stg_commande_assertions_uniqueKey_0",
+    {name: "stg_commande", includeDependentAssertions: true}
+  ]
+}
+
+post_operations {
+    ${ refresh_tableau('dim_ville') }
 }
 
 with villes as (
