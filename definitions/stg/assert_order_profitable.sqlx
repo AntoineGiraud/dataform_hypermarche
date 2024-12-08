@@ -2,5 +2,5 @@ config { type: "assertion" }
 
 -- orders with no profit
 SELECT *
-FROM ${ref("fct_commande")}
+FROM ${ref("stg_commande")}
 WHERE profit < 0

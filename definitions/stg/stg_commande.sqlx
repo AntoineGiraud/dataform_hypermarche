@@ -5,6 +5,11 @@ config {
   columns: {
     id_commande: "Order's ID",
     id_ligne: "Détail/articles de la commande - appelé ligne"
+  },
+  dependOnDependencyAssertions: true,
+  assertions: {
+    uniqueKey: ["id_ligne"],
+    nonNull:["id_ligne"]
   }
 }
 

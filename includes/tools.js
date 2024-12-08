@@ -128,16 +128,16 @@ function cartouche(args) {
  * @param {string} nom_extrait  nom de l'extrait de données dans tableau serveur
  * @returns {string} sql permettant poussant un event au pub/sub 'refresh_tableau' afin d'actualiser tableau
  */
-function update_tableau(nom_extrait) {
+function refresh_tableau(nom_extrait) {
     //si on est en dév, on n'actualise pas
     if (dataform.projectConfig.vars.env !== 'prod') {
-        return `-- update_tableau : PAS d'actualisation TABLEAU
+        return `-- refresh_tableau : PAS d'actualisation TABLEAU
         `;
     }
 
     //si on est en prod
     return `
-            -- update_tableau : actualisons l'extrait tableau
+            -- refresh_tableau : actualisons l'extrait tableau
             select bigfunctions.eu.export_to_pubsub(
                 'homeserve-haiku-prod', 'refresh_tableau',
                 '{"data":"${nom_extrait}"}',
@@ -176,6 +176,6 @@ module.exports = {
     assert_sql,
     assert_completude_derniers_jours,
     cartouche,
-    update_tableau,
+    refresh_tableau,
     notif_chat
 };
