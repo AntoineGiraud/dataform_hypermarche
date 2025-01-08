@@ -4,7 +4,8 @@ config {
   description: "Les achats de notre hypermarché - donnéees denormalisées",
   columns: {
     id_commande: "Order's ID",
-    id_ligne: "Détail/articles de la commande - appelé ligne"
+    id_ligne: "Détail/articles de la commande - appelé ligne",
+    dt_commande: "date de prise \n de commande",
   },
   dependOnDependencyAssertions: true,
   assertions: {
