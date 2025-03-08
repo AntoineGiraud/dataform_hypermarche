@@ -1,6 +1,6 @@
 config { type: "assertion" }
 
 -- orders with no profit
-SELECT *
-FROM ${ref("stg_commande")}
-WHERE profit < 0
+select *,
+from ${ref("stg_commande")}
+where profit < 0

@@ -1,0 +1,82 @@
+[sqlfluff]
+dialect = bigquery
+templater = placeholder
+runaway_limit = 10
+max_line_length = 180
+indent_unit = space
+sql_file_exts = .sqlx,.sql
+large_file_skip_byte_limit = 100000
+processes = 4
+
+exclude_rules = structure.using, structure.column_order, layout.long_lines
+
+[sqlfluff:indentation]
+tab_space_size = 4
+indented_joins = True
+allow_implicit_indents = True
+trailing_comments = before
+
+[sqlfluff:rules:layout.commas]
+# Leading or trailing commas
+line_position = trailing
+
+[sqlfluff:layout:type:comma]
+spacing_before = touch
+line_position = trailing
+
+[sqlfluff:rules:convention.select_trailing_comma]
+# No trailing comma at end of SELECT, ie before FROM (after last column name)
+select_clause_trailing_comma = require
+
+[sqlfluff:rules:ambiguous.column_references]
+# GROUP BY/ORDER BY column references (i.e. implicit by position or explicit by name)
+group_by_and_order_by_style = implicit
+
+[sqlfluff:rules:aliasing.table]
+aliasing = explicit
+
+[sqlfluff:rules:aliasing.column]
+aliasing = explicit
+
+[sqlfluff:rules:aliasing.expression]
+alow_scalar = False
+
+[sqlfluff:rules:capitalisation.keywords]
+capitalisation_policy = lower
+
+[sqlfluff:rules:capitalisation.identifiers]
+extended_capitalisation_policy = lower
+
+[sqlfluff:rules:capitalisation.functions]
+capitalisation_policy = lower
+extended_capitalisation_policy = lower
+
+[sqlfluff:rules:capitalisation.literals]
+capitalisation_policy = lower
+
+[sqlfluff:rules:structure.join_condition_order]
+preferred_first_table_in_join_clause = later
+
+[sqlfluff:rules:aliasing.length]
+# Minimum string length when creating an alias
+min_alias_length = 3
+
+[sqlfluff:rules:references.special_chars]
+# Special characters in identifiers
+unquoted_identifiers_policy = all
+quoted_identifiers_policy = all
+allow_space_in_identifier = False
+additional_allowed_characters = ["", $]
+
+[sqlfluff:rules:references.keywords]
+# Keywords should not be used as identifiers.
+unquoted_identifiers_policy = all
+quoted_identifiers_policy = none
+
+[sqlfluff:templater:placeholder]
+param_regex = (?s)\${\s*(?P<param_name>[\w_]+)(?P<rec>(?:[^{}]+|{(?&rec)})*+)}|(?P<param_name>config|pre_operations|post_operations)\s*{(?&rec)}
+ref = ref_table_placeholder
+self = self_table_placeholder
+when =
+config =
+pre_operations =

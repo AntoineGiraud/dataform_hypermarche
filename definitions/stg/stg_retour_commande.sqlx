@@ -10,5 +10,5 @@ config {
 
 select
     `ID commande` as id_commande,
-    cast(replace(`Retourné`, 'Oui', '1') as integer) as est_retourne
+    cast(replace(`Retourné`, 'Oui', '1') as integer) as est_retourne,
 from ${ ref('retours') }
