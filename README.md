@@ -100,6 +100,8 @@ cf. GCP doc [use-dataform-cli](https://cloud.google.com/dataform/docs/use-datafo
 
 ![dbt_vs_dataform](./dbt_vs_dataform.png)
 
+![source declarations](https://github.com/user-attachments/assets/312a09aa-9e5d-4755-a820-31f6c4b8268b)
+
 ### How to choose & alternatives
 
 ![choosing_dbt_dataform_other](./choosing_dbt_dataform_other.png)
